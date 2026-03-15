@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://dvsmxgwwd58sy"]
+
+[ext_resource type="Script" uid="uid://dmu7cb5dlou14" path="res://assets/scripts/player.gd" id="1_ciydl"]
+[ext_resource type="Script" uid="uid://bafyhyve6nxnk" path="res://assets/scripts/player_animation.gd" id="2_ciydl"]
+[ext_resource type="Script" uid="uid://c8e2agsqcitgi" path="res://assets/scripts/area2d.gd" id="3_eqpql"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w6dyd"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/spritesheet.png-a800b538654c83c24a714b50cffb799a.ctex"
+
+[sub_resource type="Animation" id="Animation_ciydl"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(912, 0, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_w6dyd"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(912, 0, 128, 128), Rect2(1040, 0, 128, 128), Rect2(1168, 0, 128, 128), Rect2(1296, 0, 128, 128), Rect2(1424, 0, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_eqpql"]
+resource_name = "run"
+length = 2.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 128, 128), Rect2(128, 0, 128, 128), Rect2(256, 0, 128, 128), Rect2(384, 0, 128, 128), Rect2(512, 0, 128, 128), Rect2(640, 0, 128, 128), Rect2(768, 0, 128, 128), Rect2(0, 0, 128, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ciydl"]
+_data = {
+&"RESET": SubResource("Animation_ciydl"),
+&"idle": SubResource("Animation_w6dyd"),
+&"run": SubResource("Animation_eqpql")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t5705"]
+radius = 4.0
+height = 48.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eqpql"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=303756291]
+floor_stop_on_slope = false
+script = ExtResource("1_ciydl")
+JUMP_VELOCITY = -300.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1185338659]
+offset = Vector2(-15, 0)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+
+[node name="animated" type="Node2D" parent="." unique_id=1802595286 node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
+position = Vector2(0, -51)
+script = ExtResource("2_ciydl")
+player_controller = NodePath("..")
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="animated" unique_id=1480641870]
+position = Vector2(8, 27)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CompressedTexture2D_w6dyd")
+region_enabled = true
+region_rect = Rect2(912, 0, 128, 128)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="animated" unique_id=1855323146]
+libraries/ = SubResource("AnimationLibrary_ciydl")
+autoplay = &"idle"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=142861554]
+position = Vector2(0, -24)
+shape = SubResource("CapsuleShape2D_t5705")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=697346529]
+script = ExtResource("3_eqpql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1087030259]
+position = Vector2(0, 1)
+shape = SubResource("WorldBoundaryShape2D_eqpql")
