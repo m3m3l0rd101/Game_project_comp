@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://fki5lxwv85d"]
 
+[ext_resource type="PackedScene" uid="uid://333mucfx7kbq" path="res://assets/scenes/areas/level_1.tscn" id="1_ce27r"]
+[ext_resource type="Script" uid="uid://dpy68s76g6b3k" path="res://assets/scripts/main.gd" id="1_i6tmo"]
+[ext_resource type="PackedScene" uid="uid://6p6ttnbc5wfg" path="res://assets/scenes/areas/mob.tscn" id="2_5hcw0"]
+[ext_resource type="PackedScene" uid="uid://dvsmxgwwd58sy" path="res://assets/scenes/areas/player.tscn" id="2_abii1"]
+
 [sub_resource type="Curve2D" id="Curve2D_1gtpo"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1152, 648, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 647)
@@ -7,8 +12,29 @@ _data = {
 point_count = 5
 
 [node name="main" type="Node2D" unique_id=2117843516]
+position = Vector2(4, 0)
+script = ExtResource("1_i6tmo")
+mob_scene = ExtResource("2_5hcw0")
 
-[node name="Path2D" type="Path2D" parent="." unique_id=108008469]
+[node name="MobPath" type="Path2D" parent="." unique_id=108008469]
 curve = SubResource("Curve2D_1gtpo")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1226859103]
+[node name="MobSpawnPoint" type="PathFollow2D" parent="MobPath" unique_id=1226859103]
+
+[node name="Node2D" parent="." unique_id=1046216999 instance=ExtResource("1_ce27r")]
+position = Vector2(-142, -11)
+
+[node name="CharacterBody2D" parent="." unique_id=303756291 instance=ExtResource("2_abii1")]
+position = Vector2(-1873, -91)
+input_pickable = true
+JUMP_VELOCITY = -350.0
+metadata/_edit_group_ = true
+
+[node name="MobTimer" type="Timer" parent="." unique_id=1113023096]
+wait_time = 0.5
+
+[node name="ScoreTimer" type="Timer" parent="." unique_id=1381459369]
+
+[node name="StartTimer" type="Timer" parent="." unique_id=1534237310]
+wait_time = 2.0
+one_shot = true

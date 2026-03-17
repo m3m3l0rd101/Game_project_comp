@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://6p6ttnbc5wfg"]
 
-[ext_resource type="Texture2D" uid="uid://c73l2ca6jcc77" path="res://assets/sprites/spritesheet(2).png" id="1_duuuu"]
-[ext_resource type="Script" uid="uid://cq1571b00xstk" path="res://assets/scripts/mob_1.gd" id="1_tgwch"]
+[ext_resource type="Script" uid="uid://cq1571b00xstk" path="res://assets/scripts/mob.gd" id="1_tgwch"]
+[ext_resource type="Texture2D" uid="uid://bbkiln4c3dswd" path="res://assets/sprites/mobs.png" id="2_tgwch"]
 
 [sub_resource type="Animation" id="Animation_sckdl"]
 resource_name = "new_animation"
 length = 1.75
 loop_mode = 1
-step = 0.25
+step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -18,12 +18,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Rect2(0, 0, 128, 128), Rect2(128, 0, 128, 128), Rect2(256, 0, 128, 128), Rect2(384, 0, 128, 128), Rect2(512, 0, 128, 128), Rect2(640, 0, 128, 128), Rect2(768, 0, 128, 128), Rect2(896, 0, 128, 128)]
+"values": [Rect2(0, 0, 128, 128), Rect2(128, 0, 128, 128), Rect2(256, 0, 128, 128), Rect2(384, 0, 128, 128), Rect2(0, 128, 128, 128), Rect2(128, 128, 128, 128), Rect2(256, 128, 128, 128), Rect2(384, 128, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_40xao"]
+resource_name = "mob_2"
+length = 1.75
+loop_mode = 1
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 256, 128, 128), Rect2(128, 256, 128, 128), Rect2(256, 256, 128, 128), Rect2(384, 256, 128, 128), Rect2(0, 384, 128, 128), Rect2(128, 384, 128, 128), Rect2(256, 384, 128, 128), Rect2(384, 384, 128, 128)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1m5f5"]
 _data = {
-&"mob_1": SubResource("Animation_sckdl")
+&"mob_1": SubResource("Animation_sckdl"),
+&"mob_2": SubResource("Animation_40xao")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40xao"]
@@ -38,17 +57,18 @@ autoplay = &"mob_1"
 speed_scale = 1.5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1333909470]
-position = Vector2(-1, -25)
+position = Vector2(-1, -17)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_duuuu")
+texture = ExtResource("2_tgwch")
 region_enabled = true
-region_rect = Rect2(0, 0, 128, 128)
+region_rect = Rect2(0, 256, 128, 128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1915332661]
-position = Vector2(-1, -15)
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_40xao")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1753324929]
-position = Vector2(-1, -17)
+position = Vector2(-1, -9)
+rect = Rect2(-7, -10, 16, 20)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -64,15 +64,16 @@ _data = {
 &"run": SubResource("Animation_eqpql")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t5705"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqpql"]
 radius = 4.0
-height = 48.0
+height = 26.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eqpql"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=303756291]
 floor_stop_on_slope = false
 script = ExtResource("1_ciydl")
+SPEED = 250.0
 JUMP_VELOCITY = -300.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1185338659]
@@ -88,8 +89,8 @@ animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="animated" unique_id=1480641870]
-position = Vector2(8, 27)
-scale = Vector2(0.5, 0.5)
+position = Vector2(5, 37)
+scale = Vector2(0.3, 0.3)
 texture = SubResource("CompressedTexture2D_w6dyd")
 region_enabled = true
 region_rect = Rect2(912, 0, 128, 128)
@@ -100,8 +101,8 @@ autoplay = &"idle"
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=142861554]
-position = Vector2(0, -24)
-shape = SubResource("CapsuleShape2D_t5705")
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_eqpql")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=697346529]
 script = ExtResource("3_eqpql")

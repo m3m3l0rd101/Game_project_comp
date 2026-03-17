@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cyfjdqp2vgtxr"]
+
+[ext_resource type="Texture2D" uid="uid://b0klv1agd27qk" path="res://assets/sprites/M1 16x16.png" id="1_r4n05"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uq17m"]
+radius = 4.0
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=152083423]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1857862877]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=488930745]
+shape = SubResource("CircleShape2D_uq17m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883722928]
+position = Vector2(0, -2)
+texture = ExtResource("1_r4n05")
+region_enabled = true
+region_rect = Rect2(48, 144, 16, 16)

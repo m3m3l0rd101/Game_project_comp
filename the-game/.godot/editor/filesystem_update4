@@ -1,5 +1,5 @@
-res://assets/scripts/mob_2.gd
-res://assets/scenes/areas/mob_2.tscn
-res://assets/scripts/mob_1.gd
-res://assets/scenes/areas/mob_1.tscn
-res://assets/scenes/areas/arc_1.tscn
+res://assets/scripts/mob.gd
+res://assets/scripts/player.gd
+res://assets/scenes/areas/level_1.tscn
+res://assets/scenes/areas/main.tscn
+res://assets/scenes/areas/chest.tscn
