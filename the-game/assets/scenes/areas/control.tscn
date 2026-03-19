@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://bu62pm4sfhl0a"]
+
+[ext_resource type="Script" uid="uid://dvce0yuavlbgk" path="res://assets/scripts/control.gd" id="1_suw6y"]
+[ext_resource type="Texture2D" uid="uid://d25auuvgxtmfb" path="res://assets/sprites/background1.png" id="2_e1t8t"]
+[ext_resource type="Texture2D" uid="uid://brbjv4ubpjr1e" path="res://assets/sprites/background2.png" id="3_wsm7n"]
+[ext_resource type="Texture2D" uid="uid://cirt1a1tnwxjd" path="res://assets/sprites/background3.png" id="4_qp8sj"]
+[ext_resource type="Texture2D" uid="uid://bm6daavkaw2vm" path="res://assets/sprites/generated_text.png" id="5_vujcc"]
+[ext_resource type="AudioStream" uid="uid://clyihrp2dqplk" path="res://assets/sprites/music/time_for_adventure.mp3" id="6_7yn3a"]
+
+[node name="Control" type="Control" unique_id=2139822043]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_suw6y")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1258931460]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_right = 24.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e1t8t")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=88777107]
+layout_mode = 0
+offset_top = 264.0
+offset_right = 1184.0
+offset_bottom = 648.0
+texture = ExtResource("3_wsm7n")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=942869525]
+layout_mode = 0
+offset_top = 272.0
+offset_right = 640.0
+offset_bottom = 656.0
+texture = ExtResource("4_qp8sj")
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1981568966]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 272.0
+offset_right = 1280.0
+offset_bottom = 656.0
+texture = ExtResource("4_qp8sj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=120445800]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 208.0
+offset_right = 80.0
+offset_bottom = 264.0
+grow_horizontal = 2
+text = "START GAME
+"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=821179763]
+layout_direction = 4
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51085067
+anchor_top = 0.45679012
+anchor_right = 0.51085067
+anchor_bottom = 0.45679012
+offset_left = -92.5
+offset_right = 92.5
+offset_bottom = 96.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelSelect" type="Button" parent="GridContainer" unique_id=2091423966]
+layout_mode = 2
+text = "Select Level"
+
+[node name="OptionsButton" type="Button" parent="GridContainer" unique_id=1747331858]
+layout_mode = 2
+text = "Options
+"
+
+[node name="Quit" type="Button" parent="GridContainer" unique_id=256644466]
+layout_mode = 2
+text = "QUIT
+"
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=2066900865]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -151.0
+offset_top = 100.0
+offset_right = 185.0
+offset_bottom = 188.0
+grow_horizontal = 2
+texture = ExtResource("5_vujcc")
+expand_mode = 1
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=603036894]
+stream = ExtResource("6_7yn3a")
+volume_db = -26.818
+autoplay = true
+
+[connection signal="pressed" from="GridContainer/LevelSelect" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="GridContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="GridContainer/Quit" to="." method="_on_quit_pressed"]

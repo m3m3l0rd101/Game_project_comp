@@ -1,12 +1,20 @@
 extends Node2D
-@export var mob_scene: PackedScene
-var score
+class_name Main
+@export var player_controller : PlayerControl
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+
+func _process(delta: float) :
+	$AudioStreamPlayer.play()
+	
+
+
+func _on_texture_progress_bar_value_changed(value: float) -> void:
 	pass
+
+
+func _on_texture_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://assets/scenes/areas/pause_menu.tscn")
