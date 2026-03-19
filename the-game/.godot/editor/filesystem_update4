@@ -17,3 +17,4 @@ res://assets/scenes/areas/dialogue.tscn
 res://assets/scenes/areas/Option.tscn
 res://assets/scenes/areas/level_selection.tscn
 res://assets/scripts/mob.gd
+res://assets/scripts/main.gd

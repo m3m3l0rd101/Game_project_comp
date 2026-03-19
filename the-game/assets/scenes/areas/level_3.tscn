@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b0klv1agd27qk" path="res://assets/sprites/M1 16x16.png" id="7_th0bu"]
 [ext_resource type="Texture2D" uid="uid://ctlmibx38cccy" path="res://assets/sprites/M2 16x16.png" id="8_to5c1"]
 [ext_resource type="PackedScene" uid="uid://dvsmxgwwd58sy" path="res://assets/scenes/areas/player.tscn" id="9_qh5yb"]
+[ext_resource type="PackedScene" uid="uid://dgd48edp5ah8n" path="res://assets/scenes/areas/door.tscn" id="10_e245i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ibj6"]
 texture = ExtResource("1_mh21v")
@@ -1161,3 +1162,6 @@ tile_set = SubResource("TileSet_gqjfb")
 
 [node name="CharacterBody2D" parent="." unique_id=303756291 instance=ExtResource("9_qh5yb")]
 position = Vector2(-1865, -40)
+
+[node name="Area2D" parent="." unique_id=932516524 instance=ExtResource("10_e245i")]
+position = Vector2(1081, -23)

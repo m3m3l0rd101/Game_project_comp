@@ -1,6 +1,6 @@
-extends Node2D
-class_name Main
-@export var player_controller : PlayerControl
+extends Control
+
+
 
 func _ready() -> void:
 	pass 

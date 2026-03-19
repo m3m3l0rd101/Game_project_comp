@@ -64,8 +64,8 @@ const amount := 10
 
 func update_health_ui():
 	if has_node("res://assets/scenes/areas/main.tscn/CanvasLayer/TextureProgressBar"):
-		#get_node("res://assets/scenes/areas/main.tscn/CanvasLayer/TextureProgress").value = health
-		print("path doesn't exist")
+		get_node("res://assets/scenes/areas/main.tscn/CanvasLayer/TextureProgress").value = health
+		
 
 var player_died := false
 func die():
@@ -96,6 +96,8 @@ var coin_count :=0
 const coin_amount:= 5
 func coin_collection()->void:
 	coin_count+=coin_amount
+	get_node("res://assets/scenes/areas/main.tscn/CanvasLayer/TextureProgress2").value = coin_count
+	
 	
 
 	
