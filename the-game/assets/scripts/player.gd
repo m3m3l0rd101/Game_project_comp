@@ -1,51 +1,70 @@
 extends CharacterBody2D
-class_name PlayerControl
-
-
-@export var SPEED = 300.0
-@export var JUMP_VELOCITY = -200.0
-var screen_size
-var direction =0
-func _ready():
-	screen_size = get_viewport_rect().size
-	
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var jump_sound: AudioStreamPlayer2D = $"jump sound"
+@onready var death_sound: AudioStreamPlayer2D = $"death sound"
+const DASH_SPEED=900
+var dashing = false
+var jump_count=0
+const SPEED = 300.0
+const JUMP_VELOCITY = -850.0
+var alive = true
+var can_move=true
+var can_dash=true
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	if !alive:
+		return
+ # gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	# Handle jump.
-
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	direction = Input.get_axis("ui_left", "ui_right")
+	else :
+		jump_count=0
+	if can_move:
+  # jump
+		if Input.is_action_just_pressed("ui_accept") and jump_count<2:
+			velocity.y = JUMP_VELOCITY
+			jump_sound.play()
+			jump_count+=1
+		if Input.is_action_just_pressed("dashing")and can_dash :
+			dashing=true
+			can_dash=false
+			$dash_timer.start()
+			$dash_timer_again.start()
+  # movement
+	var direction := Input.get_axis("ui_left","ui_right")
 	if direction:
-		velocity.x = direction * SPEED
+		if dashing:
+			velocity.x = direction * DASH_SPEED
+		else :
+			velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	 #if not is_on_floor():
-  		#velocity += get_gravity() * delta
-  		#animated_sprite_2d.play("Jump")
- 	#else :
-  		#jump_count=0
- 	#if can_move:
-  		## jump
-  	#if Input.is_action_just_pressed("Jump") and jump_count<2:
-  	 #velocity.y = JUMP_VELOCITY
-   	#jump_sound.play()
-  	 #jump_count+=1
 
 	move_and_slide()
+
+  # flip sprite
+	animated_sprite_2d.flip_h = direction < 0
+
+  # animation system
+	if abs(velocity.x) > 1 or (velocity.x) < -1 :
+		animated_sprite_2d.play("Run")
+	else:
+		animated_sprite_2d.play("Idle")
+
+
+func _on_dash_timer_timeout() -> void:
+	dashing=false
+
+
+func _on_dash_timer_again_timeout() -> void:
+	can_dash=true
 	
 @export var max_health := 100
 var health := max_health
 const amount := 10
 
 func update_health_ui():
-	if has_node("res://assets/scenes/areas/main.tscn/CanvasLayer/TextureButton"):
-		#get_node("res://assets/scenes/areas/main.tscn/CanvasLayer/TextureButton").value = health
+	if has_node("res://assets/scenes/areas/main.tscn/CanvasLayer/TextureProgressBar"):
+		#get_node("res://assets/scenes/areas/main.tscn/CanvasLayer/TextureProgress").value = health
 		print("path doesn't exist")
 
 var player_died := false
