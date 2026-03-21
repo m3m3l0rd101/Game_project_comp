@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://6p6ttnbc5wfg" path="res://assets/scenes/areas/mob.tscn" id="8_ij2gh"]
 [ext_resource type="PackedScene" uid="uid://dgd48edp5ah8n" path="res://assets/scenes/areas/door.tscn" id="9_o5ssw"]
 [ext_resource type="PackedScene" uid="uid://cyfjdqp2vgtxr" path="res://assets/scenes/areas/coin.tscn" id="10_xvhqy"]
+[ext_resource type="Texture2D" uid="uid://cn4coyw1etebm" path="res://assets/sprites/icons8-pause-100.png" id="11_v654r"]
+[ext_resource type="Texture2D" uid="uid://cgo2c4cvbyfi6" path="res://assets/sprites/fantasy_pixelart_ui/special-bars/life_bar_empty.png" id="12_o5jlt"]
+[ext_resource type="Texture2D" uid="uid://ms87a7bdd6xp" path="res://assets/sprites/fantasy_pixelart_ui/special-bars/life_bar_filled.png" id="13_2ova0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gmf2"]
 texture = ExtResource("1_2kjsf")
@@ -2887,6 +2890,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_43n4i")
 sources/1 = SubResource("TileSetAtlasSource_h8yhr")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5h2jw"]
+load_path = "res://.godot/imported/coin.png-c8309bf0f8fb5f3a7d1e96a4eb3f02ce.ctex"
+
 [node name="level_2" type="Node2D" unique_id=232654345]
 
 [node name="TileMap" type="TileMap" parent="." unique_id=868211106]
@@ -2981,3 +2987,53 @@ position = Vector2(802, -170)
 
 [node name="Area2D3" parent="Coins" unique_id=1274867056 instance=ExtResource("10_xvhqy")]
 position = Vector2(834, -170)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1833900900]
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer" unique_id=1535380228]
+offset_left = 1201.0
+offset_top = 1.0
+offset_right = 1223.0
+offset_bottom = 26.0
+action_mode = 0
+keep_pressed_outside = true
+texture_normal = ExtResource("11_v654r")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=635876405]
+offset_left = -36.0
+offset_top = 18.0
+offset_right = 101.0
+offset_bottom = 32.0
+step = 20.0
+fill_mode = 1
+show_percentage = false
+indeterminate = true
+editor_preview_indeterminate = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1228047239]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1203.0
+offset_top = 11.0
+offset_right = -1049.0
+offset_bottom = 36.0
+grow_horizontal = 0
+step = 20.0
+fill_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("12_o5jlt")
+texture_over = ExtResource("13_2ova0")
+tint_over = Color(0.5330367, 0.5330367, 0.5330367, 1)
+tint_progress = Color(0.5649617, 0.5649616, 0.5649616, 1)
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="CanvasLayer" unique_id=1284848866]
+offset_left = 133.0
+offset_top = 5.0
+offset_right = 325.0
+offset_bottom = 26.0
+max_value = 10000.0
+nine_patch_stretch = true
+texture_under = SubResource("CompressedTexture2D_5h2jw")

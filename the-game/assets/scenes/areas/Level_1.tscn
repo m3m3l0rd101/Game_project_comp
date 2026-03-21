@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://ctlmibx38cccy" path="res://assets/sprites/M2 16x16.png" id="6_es43e"]
 [ext_resource type="PackedScene" uid="uid://dvsmxgwwd58sy" path="res://assets/scenes/areas/player.tscn" id="7_ksstt"]
 [ext_resource type="PackedScene" uid="uid://dgd48edp5ah8n" path="res://assets/scenes/areas/door.tscn" id="8_0pegs"]
+[ext_resource type="PackedScene" uid="uid://dyuno2mvmsstp" path="res://assets/scenes/areas/on_topr.tscn" id="9_jrcwd"]
+[ext_resource type="PackedScene" uid="uid://cyfjdqp2vgtxr" path="res://assets/scenes/areas/coin.tscn" id="10_6wymm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fmop8"]
 texture = ExtResource("1_whtp3")
@@ -2928,5 +2930,57 @@ use_kinematic_bodies = true
 [node name="CharacterBody2D" parent="." unique_id=303756291 instance=ExtResource("7_ksstt")]
 position = Vector2(-1738, -79)
 
+[node name="CanvasLayer" parent="CharacterBody2D" unique_id=1727012100 instance=ExtResource("9_jrcwd")]
+
 [node name="Area2D" parent="." unique_id=932516524 instance=ExtResource("8_0pegs")]
 position = Vector2(1035, 128)
+
+[node name="Coins" type="Node2D" parent="." unique_id=75826839]
+
+[node name="Area2D4" parent="Coins" unique_id=224734915 instance=ExtResource("10_6wymm")]
+position = Vector2(51, 191)
+
+[node name="Area2D12" parent="Coins" unique_id=1734275161 instance=ExtResource("10_6wymm")]
+position = Vector2(-1126, -44)
+
+[node name="Area2D5" parent="Coins" unique_id=421459185 instance=ExtResource("10_6wymm")]
+position = Vector2(19, 191)
+
+[node name="Area2D13" parent="Coins" unique_id=1730649861 instance=ExtResource("10_6wymm")]
+position = Vector2(-1142, -44)
+
+[node name="Area2D16" parent="Coins" unique_id=1587265591 instance=ExtResource("10_6wymm")]
+position = Vector2(-1174, -44)
+
+[node name="Area2D" parent="Coins" unique_id=1374519092 instance=ExtResource("10_6wymm")]
+position = Vector2(85, 191)
+
+[node name="Area2D15" parent="Coins" unique_id=890983659 instance=ExtResource("10_6wymm")]
+position = Vector2(-1190, -44)
+
+[node name="Area2D14" parent="Coins" unique_id=243676591 instance=ExtResource("10_6wymm")]
+position = Vector2(-2172, -282)
+
+[node name="Area2D10" parent="Coins" unique_id=1532163202 instance=ExtResource("10_6wymm")]
+position = Vector2(414, 103)
+
+[node name="Area2D11" parent="Coins" unique_id=485976237 instance=ExtResource("10_6wymm")]
+position = Vector2(-1158, -44)
+
+[node name="Area2D9" parent="Coins" unique_id=777607489 instance=ExtResource("10_6wymm")]
+position = Vector2(446, 103)
+
+[node name="Area2D8" parent="Coins" unique_id=1009347419 instance=ExtResource("10_6wymm")]
+position = Vector2(430, 105)
+
+[node name="Area2D7" parent="Coins" unique_id=418812649 instance=ExtResource("10_6wymm")]
+position = Vector2(478, 105)
+
+[node name="Area2D6" parent="Coins" unique_id=1167462726 instance=ExtResource("10_6wymm")]
+position = Vector2(462, 103)
+
+[node name="Area2D2" parent="Coins" unique_id=1009781504 instance=ExtResource("10_6wymm")]
+position = Vector2(69, 191)
+
+[node name="Area2D3" parent="Coins" unique_id=1365870951 instance=ExtResource("10_6wymm")]
+position = Vector2(35, 191)

@@ -1,7 +1,6 @@
 extends CharacterBody2D
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var jump_sound: AudioStreamPlayer2D = $"jump sound"
-@onready var death_sound: AudioStreamPlayer2D = $"death sound"
+class_name PlayerControl
+@onready var death_sound: AudioStreamPlayer = $AudioStreamPlayer2
 const DASH_SPEED=400
 var dashing = false
 var jump_count=0
@@ -97,6 +96,9 @@ func coin_collection()->void:
 	coin_count+=coin_amount
 	get_node("res://assets/scenes/areas/main.tscn/CanvasLayer/TextureProgress2").value = coin_count
 	
+var path
+func level_num():
+	path = get_tree().current_scene.name
 	
 
 	

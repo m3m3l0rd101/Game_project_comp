@@ -3,7 +3,7 @@ extends Control
 
 func _on_select_next_pressed() -> void:
 	if player_controller.player_died:
-		get_tree().change_scene_to_file("")
+		get_tree().change_scene_to_file(player_controller.path)
 		$GridContainer/SelectNext.text += 'Restart'
 	else:
 		get_tree().change_scene_to_file("res://assets/scenes/areas/level_selection.tscn")
