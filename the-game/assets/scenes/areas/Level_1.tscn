@@ -2926,7 +2926,7 @@ tile_set = SubResource("TileSet_poons")
 use_kinematic_bodies = true
 
 [node name="CharacterBody2D" parent="." unique_id=303756291 instance=ExtResource("7_ksstt")]
-position = Vector2(-1738, -84)
+position = Vector2(-1738, -79)
 
 [node name="Area2D" parent="." unique_id=932516524 instance=ExtResource("8_0pegs")]
 position = Vector2(1035, 128)

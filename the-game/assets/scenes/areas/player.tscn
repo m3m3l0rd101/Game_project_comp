@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dvsmxgwwd58sy"]
 
 [ext_resource type="Script" uid="uid://dmu7cb5dlou14" path="res://assets/scripts/player.gd" id="1_ciydl"]
-[ext_resource type="Script" uid="uid://bafyhyve6nxnk" path="res://assets/scripts/player_animation.gd" id="2_ciydl"]
 [ext_resource type="AudioStream" uid="uid://cxi6piifjljl6" path="res://assets/sprites/music/29811401-wondrous-waters-119518.mp3" id="4_eiwrt"]
 [ext_resource type="AudioStream" uid="uid://pp7nmog8y66d" path="res://assets/sprites/music/death.wav" id="5_84f3e"]
 
@@ -57,20 +56,14 @@ height = 26.0
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=303756291]
 floor_stop_on_slope = false
 script = ExtResource("1_ciydl")
-SPEED = 250.0
-JUMP_VELOCITY = -350.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1185338659]
 offset = Vector2(-15, 0)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
-[node name="animated" type="Node2D" parent="." unique_id=1802595286 node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
+[node name="animated" type="Node2D" parent="." unique_id=1802595286]
 position = Vector2(0, -51)
-script = ExtResource("2_ciydl")
-player_controller = NodePath("..")
-animation_player = NodePath("AnimationPlayer")
-sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="animated" unique_id=1480641870]
 position = Vector2(5, 37)
@@ -90,8 +83,6 @@ shape = SubResource("CapsuleShape2D_eqpql")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=178828047]
 stream = ExtResource("5_84f3e")
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1970614105]
 
 [node name="AudioTimer" type="Timer" parent="." unique_id=1249121628]
 process_callback = 0

@@ -2,11 +2,11 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_sound: AudioStreamPlayer2D = $"jump sound"
 @onready var death_sound: AudioStreamPlayer2D = $"death sound"
-const DASH_SPEED=900
+const DASH_SPEED=400
 var dashing = false
 var jump_count=0
 const SPEED = 300.0
-const JUMP_VELOCITY = -850.0
+const JUMP_VELOCITY = -350.0
 var alive = true
 var can_move=true
 var can_dash=true
@@ -22,7 +22,6 @@ func _physics_process(delta: float) -> void:
   # jump
 		if Input.is_action_just_pressed("ui_accept") and jump_count<2:
 			velocity.y = JUMP_VELOCITY
-			jump_sound.play()
 			jump_count+=1
 		if Input.is_action_just_pressed("dashing")and can_dash :
 			dashing=true
@@ -42,13 +41,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
   # flip sprite
-	animated_sprite_2d.flip_h = direction < 0
+	$animated/Sprite2D.flip_h = direction < 0
 
   # animation system
 	if abs(velocity.x) > 1 or (velocity.x) < -1 :
-		animated_sprite_2d.play("Run")
+		$animated/AnimationPlayer.play("run")
 	else:
-		animated_sprite_2d.play("Idle")
+		$animated/AnimationPlayer.play("idle")
 
 
 func _on_dash_timer_timeout() -> void:
