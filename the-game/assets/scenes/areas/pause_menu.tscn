@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cwfam165fuqsv"]
+
+[ext_resource type="Script" uid="uid://crdhn583m08kg" path="res://assets/scripts/pause_menu.gd" id="1_8klfr"]
+[ext_resource type="Texture2D" uid="uid://frpdxa8swaa7" path="res://assets/sprites/fantasy_pixelart_ui/panels/wood_panel.png" id="1_45xs2"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1162397584]
+script = ExtResource("1_8klfr")
+
+[node name="pause_menu" type="Control" parent="." unique_id=1678910482]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="pause_menu" unique_id=340570392]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_right = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_45xs2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause_menu" unique_id=1449299112]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 133.0
+offset_right = 733.0
+offset_bottom = 153.0
+text = "Pause Menu"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="pause_menu" unique_id=1735628366]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -64.0
+offset_right = 68.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="pause_menu/GridContainer" unique_id=1329527387]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resume"
+
+[node name="Button2" type="Button" parent="pause_menu/GridContainer" unique_id=1855341690]
+layout_mode = 2
+text = "Options"
+
+[node name="Button3" type="Button" parent="pause_menu/GridContainer" unique_id=953603833]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="pause_menu/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="pause_menu/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="pause_menu/GridContainer/Button3" to="." method="_on_button_3_pressed"]

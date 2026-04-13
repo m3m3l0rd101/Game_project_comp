@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dyuno2mvmsstp"]
+
+[ext_resource type="Texture2D" uid="uid://cn4coyw1etebm" path="res://assets/sprites/icons8-pause-100.png" id="1_umcxp"]
+[ext_resource type="Texture2D" uid="uid://cgo2c4cvbyfi6" path="res://assets/sprites/fantasy_pixelart_ui/special-bars/life_bar_empty.png" id="2_3ppdr"]
+[ext_resource type="Texture2D" uid="uid://ms87a7bdd6xp" path="res://assets/sprites/fantasy_pixelart_ui/special-bars/life_bar_filled.png" id="3_6543b"]
+[ext_resource type="Texture2D" uid="uid://dnbrh3vraoebf" path="res://assets/sprites/icons8-dollar-coin-32.png" id="4_d1iiu"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1727012100]
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1221801166]
+offset_left = 1201.0
+offset_top = 1.0
+offset_right = 1223.0
+offset_bottom = 26.0
+action_mode = 0
+keep_pressed_outside = true
+texture_normal = ExtResource("1_umcxp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=301529585]
+offset_left = 69.0
+offset_top = 18.0
+offset_right = 206.0
+offset_bottom = 32.0
+step = 20.0
+fill_mode = 1
+show_percentage = false
+indeterminate = true
+editor_preview_indeterminate = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1663485083]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1098.0
+offset_top = 10.0
+offset_right = -944.0
+offset_bottom = 35.0
+grow_horizontal = 0
+step = 20.0
+fill_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("2_3ppdr")
+texture_over = ExtResource("3_6543b")
+tint_over = Color(0.5330367, 0.5330367, 0.5330367, 1)
+tint_progress = Color(0.5649617, 0.5649616, 0.5649616, 1)
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="." unique_id=224216895]
+texture_filter = 1
+offset_left = 344.0
+offset_top = 10.0
+offset_right = 369.0
+offset_bottom = 31.0
+tooltip_text = "
+"
+max_value = 10000.0
+step = 5.0
+rounded = true
+allow_greater = true
+nine_patch_stretch = true
+texture_under = ExtResource("4_d1iiu")
